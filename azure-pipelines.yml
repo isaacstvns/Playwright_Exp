@@ -13,33 +13,13 @@ steps:
     displayName: 'Use Node.js 22'
 
   - script: |
-      echo "Node path:"
-      which node
-
-      echo "NPM path:"
-      which npm
-
-      echo "Node version:"
-      node -v
-
-      echo "NPM version:"
-      npm -v
-
-      echo "NPM config:"
-      npm config list
-
-      echo "Install dependencies:"
-      npm ci --verbose
-    displayName: Check Node, NPM and install dependencies
-
-  - script: |
-      pwd
-      ls -la
       npm ci
     displayName: Install dependencies
 
-  - script: npx playwright install --with-deps
-    displayName: Install Playwright browsers
+  # Playwright browsers are not included in the npm ci step, so we need to install them separately. The --with-deps flag ensures that all necessary dependencies are installed as well.
+  #However, since the Self-Hosted agent requires sudo permissions to install the browsers, we will skip this step and assume that the browsers are already installed on the agent.
+  #- script: npx playwright install --with-deps
+  #  displayName: Install Playwright browsers
 
   - script: npx playwright test
     displayName: Run Playwright tests
