@@ -7,7 +7,7 @@ pool:
     - agent.name -equals Linux-Mint
 
 steps:
-  - task: NodeTool@0
+  - task: NodeTool@1
     inputs:
       versionSpec: '22.x'
     displayName: 'Use Node.js 22'
