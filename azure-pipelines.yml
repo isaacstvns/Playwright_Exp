@@ -11,7 +11,10 @@ steps:
     inputs:
       versionSpec: '22.x'
 
-  - script: npm ci
+  - script: |
+      pwd
+      ls -la
+      npm ci
     displayName: Install dependencies
 
   - script: npx playwright install --with-deps
